@@ -1,0 +1,57 @@
+{
+  "name": "aukro-mcp",
+  "version": "1.0.0",
+  "description": "Unofficial Model Context Protocol (MCP) server for Aukro.cz marketplace — works anonymously out of the box and supports session cookies, OAuth2 tokens, or interactive browser login",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "aukro-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "aukro",
+    "aukro.cz",
+    "marketplace",
+    "auction",
+    "czech",
+    "ai-agent"
+  ],
+  "author": "mich41v4294",
+  "license": "CC-BY-NC-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mich41v4294/aukro-mcp.git"
+  },
+  "homepage": "https://github.com/mich41v4294/aukro-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/mich41v4294/aukro-mcp/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^4.1.12"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+credentials.json
+chrome-login-profile/
+*.log
+.DS_Store
+coverage/
+.cursor/
+.claude/
