@@ -73,6 +73,37 @@ describe("Aukro MCP Server (In-Memory Transport + Deterministic Mock API)", () =
           page: { size: 20, totalElements: 1, totalPages: 1, number: 0 },
           minPrice: 100,
           maxPrice: 15000,
+          currentCategory: {
+            id: 100838,
+            name: "Mobilní telefony",
+            seoUrl: "mobilni-telefony",
+            description: "<div class=\"aukro-wysiwyg-default\"><p>Long SEO marketing copy...</p></div>",
+            metaDescription: "Najděte si <category_name>...",
+            botRestriction: false,
+          },
+          categoryPath: [
+            {
+              id: 100837,
+              level: 0,
+              name: "Mobily a chytrá elektronika",
+              shortName: "Mobily a chytrá elektronika",
+              fullName: "Mobily a chytrá elektronika",
+              seoUrl: "mobily-a-gps",
+              active: true,
+              itemCategoryId: 100837,
+            },
+            {
+              id: 100838,
+              level: 1,
+              name: "Mobilní telefony",
+              shortName: "Mobilní telefony",
+              fullName: "Mobily a chytrá elektronika | Mobilní telefony",
+              seoUrl: "mobilni-telefony",
+              active: true,
+              parentId: 100837,
+              itemCategoryId: 100838,
+            },
+          ],
           content: [
             {
               itemId: isFinished ? 9000001 : 7140475083,
@@ -433,6 +464,16 @@ describe("Aukro MCP Server (In-Memory Transport + Deterministic Mock API)", () =
     );
     expect(Array.isArray(searchData.items)).toBe(true);
     expect(searchData.items.length).toBeGreaterThan(0);
+    expect(searchData.currentCategory).toEqual({
+      id: 100838,
+      name: "Mobilní telefony",
+      seoUrl: "mobilni-telefony",
+    });
+    expect(searchData.currentCategory.description).toBeUndefined();
+    expect(searchData.categoryPath).toEqual([
+      { id: 100837, name: "Mobily a chytrá elektronika", seoUrl: "mobily-a-gps" },
+      { id: 100838, name: "Mobilní telefony", seoUrl: "mobilni-telefony" },
+    ]);
 
     const firstOfferId = searchData.items[0].itemId as number;
     expect(firstOfferId).toBe(7140475083);

@@ -410,7 +410,13 @@ export function registerSearchTools(server: McpServer, client: AukroHttpClient):
                 seoUrl: (raw.currentCategory as Record<string, unknown>).seoUrl,
               }
             : undefined,
-          categoryPath: raw.categoryPath,
+          categoryPath: Array.isArray(raw.categoryPath)
+            ? (raw.categoryPath as Array<Record<string, unknown>>).map((c) => ({
+                id: c.id,
+                name: c.name,
+                seoUrl: c.seoUrl,
+              }))
+            : undefined,
           itemById: raw.itemById,
           redirectUrl: raw.redirectUrl,
           itemsCount: content.length,
